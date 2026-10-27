@@ -1,0 +1,11 @@
+{
+  "name": "ABHI People portal",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "postCreateCommand": "npm install -g pnpm@10.28.0 && pnpm install",
+  "postAttachCommand": "pnpm dev",
+  "forwardPorts": [3100],
+  "portsAttributes": {
+    "3100": { "label": "ABHI portal", "onAutoForward": "openBrowser" }
+  },
+  "hostRequirements": { "cpus": 2 }
+}
