@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ABHI HR portal design tokens. Brand teal is the action colour; amber marks attention. */
+@theme {
+  --color-brand: #0e7c66;
+  --color-brand-2: #0b6957;
+  --color-brand-soft: #e3f3ee;
+  --color-ink: #13212b;
+  --color-muted: #5b6b77;
+  --color-line: #e3e8ec;
+  --color-paper: #f5f7f8;
+  --color-surface: #ffffff;
+  --color-side: #0f2a33;
+  --color-side-2: #173a46;
+  --color-on-side: #e8f1f3;
+  --color-on-side-muted: #9fb6bd;
+  --color-ok: #17794a;
+  --color-ok-bg: #e2f4ea;
+  --color-warn: #9a6200;
+  --color-warn-bg: #fdf1d8;
+  --color-bad: #b23a2e;
+  --color-bad-bg: #fbe5e2;
+  --color-info: #2457a6;
+  --color-info-bg: #e5edfa;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); }
+
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+
+/* Form controls share one look */
+.input {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.input:focus { outline: 2px solid color-mix(in srgb, var(--color-brand) 35%, transparent); border-color: var(--color-brand); }
+textarea.input { min-height: 5.5rem; }
+.label { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink); margin-bottom: 0.25rem; }
+.hint { font-size: 0.75rem; color: var(--color-muted); margin-top: 0.25rem; }
+
+.table { width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+.table th { text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-muted); padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-line); background: #fafbfc; white-space: nowrap; }
+.table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+.table tbody tr:hover { background: #fafcfc; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-area { box-shadow: none !important; border: 0 !important; margin: 0 !important; }
+}
