@@ -73,15 +73,16 @@ export function Donut({
 }) {
   const total = parts.reduce((s, p) => s + p.value, 0) || 1;
   const r = 15.9155;
-  let offset = 25;
+  const pcts = parts.map((p) => (p.value / total) * 100);
+  const offsets = pcts.map((_, i) => 25 - pcts.slice(0, i).reduce((s, x) => s + x, 0));
   return (
     <div className="flex flex-wrap items-center gap-5">
       <div className="relative" style={{ width: size, height: size }}>
         <svg viewBox="0 0 42 42" width={size} height={size} role="img" aria-label={parts.map((p) => `${p.label} ${p.value}`).join(", ")}>
           <circle cx="21" cy="21" r={r} fill="none" stroke="#eef2f4" strokeWidth="5" />
           {parts.map((p, i) => {
-            const pct = (p.value / total) * 100;
-            const el = (
+            const pct = pcts[i]!;
+            return (
               <circle
                 key={p.label}
                 cx="21"
@@ -91,11 +92,9 @@ export function Donut({
                 stroke={p.color ?? PALETTE[i % PALETTE.length]}
                 strokeWidth="5"
                 strokeDasharray={`${pct} ${100 - pct}`}
-                strokeDashoffset={offset}
+                strokeDashoffset={offsets[i]}
               />
             );
-            offset -= pct;
-            return el;
           })}
         </svg>
         {center && <div className="absolute inset-0 flex flex-col items-center justify-center text-center">{center}</div>}

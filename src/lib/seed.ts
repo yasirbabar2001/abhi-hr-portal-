@@ -87,7 +87,7 @@ export function buildSeed(): Db {
     aud: m("department", "AUD", "Internal Audit"),
     trs: m("department", "TRS", "Treasury"),
   };
-  const departments = Object.values(dep);
+
   const gr = {
     og3: m("grade", "OG-III", "Officer Grade III"),
     og2: m("grade", "OG-II", "Officer Grade II"),
@@ -246,7 +246,8 @@ export function buildSeed(): Db {
       branchId,
       designationId: des.id,
       gradeId: g.id,
-      approvedHeadcount: approved,
+      // approved = people already in post + planned growth
+      approvedHeadcount: employees.filter((e) => e.active && e.departmentId === d.id && e.designationId === des.id).length + approved,
       annualCostPerHead: cost,
       createdBy: hr1.id,
       createdAt: daysAgo(120),
@@ -255,17 +256,18 @@ export function buildSeed(): Db {
     budgets.push(b);
     return b;
   };
-  const bRo = budgetFor(dep.mfo, ds.ro, gr.og3, 22, 1_450_000);
-  const bCso = budgetFor(dep.ret, ds.cso, gr.og3, 14, 1_250_000);
-  const bCo = budgetFor(dep.crd, ds.co, gr.og2, 8, 2_100_000);
-  const bRa = budgetFor(dep.crd, ds.ra, gr.og1, 4, 2_900_000);
-  const bSe = budgetFor(dep.it, ds.se, gr.og1, 9, 3_600_000);
-  const bPm = budgetFor(dep.dig, ds.pm, gr.avp, 3, 5_400_000);
-  budgetFor(dep.cmp, ds.cmo, gr.og1, 4, 2_700_000);
-  budgetFor(dep.fin, ds.acc, gr.og2, 5, 2_000_000);
-  budgetFor(dep.hr, ds.hrbp, gr.og1, 3, 2_600_000);
-  budgetFor(dep.aud, ds.aud, gr.og1, 3, 2_800_000);
-  budgetFor(dep.ret, ds.bm, gr.avp, 6, 4_800_000);
+  const bRo = budgetFor(dep.mfo, ds.ro, gr.og3, 8, 1_450_000);
+  const bCso = budgetFor(dep.ret, ds.cso, gr.og3, 4, 1_250_000);
+  const bCo = budgetFor(dep.crd, ds.co, gr.og2, 2, 2_100_000);
+  const bRa = budgetFor(dep.crd, ds.ra, gr.og1, 2, 2_900_000);
+  const bSe = budgetFor(dep.it, ds.se, gr.og1, 4, 3_600_000);
+  const bPm = budgetFor(dep.dig, ds.pm, gr.avp, 2, 5_400_000);
+  budgetFor(dep.cmp, ds.cmo, gr.og1, 1, 2_700_000);
+  budgetFor(dep.fin, ds.acc, gr.og2, 1, 2_000_000);
+  budgetFor(dep.hr, ds.hrbp, gr.og1, 1, 2_600_000);
+  budgetFor(dep.aud, ds.aud, gr.og1, 0, 2_800_000);
+  budgetFor(dep.ret, ds.bm, gr.avp, 2, 4_800_000);
+  budgetFor(dep.trs, ds.dl, gr.avp, 0, 5_200_000);
 
   // ---------- job descriptions ----------
   const jds: JobDescription[] = [];
@@ -603,8 +605,8 @@ export function buildSeed(): Db {
       applications.push(app);
     }
   }
-  // two rejected applications for the analytics
-  for (const a of applications.filter((x) => x.stage === "applied").slice(0, 3)) {
+  // a few rejected applications for the analytics (the demo candidate stays active)
+  for (const a of applications.filter((x) => x.stage === "applied").slice(1, 4)) {
     a.status = "rejected";
     a.decision = "reject";
     a.rejectionReasonId = master.find((x) => x.type === "rejection_reason")!.id;
@@ -626,7 +628,7 @@ export function buildSeed(): Db {
       round: 1,
       title: mode === "recorded_video" ? "One-way video interview" : "Panel interview",
       mode,
-      start: past ? daysAgo(8 + dayOffset) : daysAhead(1 + (dayOffset % 6), 10 + (dayOffset % 6)),
+      start: past ? daysAhead(-(8 + dayOffset), 10 + (dayOffset % 6)) : daysAhead(1 + (dayOffset % 6), 10 + (dayOffset % 6)),
       durationMin: 45,
       location: mode === "in_person" ? "Karachi Head Office, 5th floor, Meeting Room 2" : undefined,
       meetingUrl: mode === "live_video" ? `https://meet.jit.si/abhi-interview-${a.code.toLowerCase()}` : undefined,
