@@ -13,12 +13,10 @@ export function InternalShell({ user, children }: { user: User; children: React.
   return (
     <div className="min-h-screen lg:pl-64">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 overflow-y-auto bg-side lg:block">
-        <Link href="/hr" className="flex h-14 items-center gap-2 border-b border-side-2 px-5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand font-bold text-white">A</span>
-          <span className="leading-tight">
-            <span className="block text-sm font-semibold text-white">{d.settings.shortName} People</span>
-            <span className="block text-[11px] text-on-side-muted">Talent & HR portal</span>
-          </span>
+        <Link href="/hr" className="flex h-16 flex-col justify-center gap-0.5 border-b border-side-2 px-5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/logo-white.png" alt={`${d.settings.shortName} EX`} className="h-7 w-auto self-start" />
+          <span className="text-[11px] text-on-side-muted">Talent & HR portal</span>
         </Link>
         <Sidebar groups={groups} />
       </aside>

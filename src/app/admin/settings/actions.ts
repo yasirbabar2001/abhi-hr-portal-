@@ -24,7 +24,7 @@ export async function saveSettings(form: FormData) {
     const prefix = String(form.get("employeeIdPrefix") ?? "").trim();
     if (!prefix) throw new Error("Enter an employee ID prefix.");
     const color = String(form.get("primaryColor") ?? "");
-    if (!/^#[0-9a-fA-F]{6}$/.test(color)) throw new Error("Brand colour must be a hex value like #0e7c66.");
+    if (!/^#[0-9a-fA-F]{6}$/.test(color)) throw new Error("Brand colour must be a hex value like #08182e.");
     const chain = (k: string) => {
       const c = lines(form.get(k));
       if (!c.length) throw new Error("Each approval chain needs at least one step.");

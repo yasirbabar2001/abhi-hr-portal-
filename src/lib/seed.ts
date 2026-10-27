@@ -897,7 +897,7 @@ export function buildSeed(): Db {
     settings: {
       companyName: "ABHI Microfinance Bank Limited",
       shortName: "ABHI",
-      primaryColor: "#0e7c66",
+      primaryColor: "#08182e",
       careersIntro: "Build fair, simple finance for millions of Pakistanis. Find a role where your work changes lives.",
       supportEmail: "careers@abhi.com.pk",
       employeeIdPrefix: "ABHI",

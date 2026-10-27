@@ -21,7 +21,7 @@ export function Sidebar({ groups, onNavigate }: { groups: NavGroup[]; onNavigate
                   aria-current={isActive(i.href) ? "page" : undefined}
                   className={clsx(
                     "flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm",
-                    isActive(i.href) ? "bg-side-2 font-medium text-white" : "text-on-side hover:bg-side-2/60",
+                    isActive(i.href) ? "bg-side-2 font-medium text-white shadow-[inset_3px_0_0_var(--color-accent)]" : "text-on-side hover:bg-side-2/60",
                   )}
                 >
                   <span aria-hidden className="w-5 text-center">{i.icon}</span>

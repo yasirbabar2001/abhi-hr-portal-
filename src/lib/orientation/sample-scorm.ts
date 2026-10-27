@@ -6,8 +6,8 @@ main{max-width:680px;margin:0 auto;padding:28px 20px}
 .card{background:#fff;border:1px solid #e3e8ec;border-radius:14px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 h1{font-size:22px;margin:0 0 6px}.step{font-size:12px;color:#5b6b77;text-transform:uppercase;letter-spacing:.05em}
 p,li{line-height:1.6}.tip{background:#e3f3ee;border-radius:10px;padding:12px 14px;margin:14px 0}
-a.btn,button{display:inline-block;background:#0e7c66;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:14px;text-decoration:none;cursor:pointer}
-a.ghost{background:transparent;color:#0e7c66}fieldset{border:1px solid #e3e8ec;border-radius:10px;margin:12px 0;padding:12px}
+a.btn,button{display:inline-block;background:#08182e;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:14px;text-decoration:none;cursor:pointer}
+a.ghost{background:transparent;color:#08182e}fieldset{border:1px solid #e3e8ec;border-radius:10px;margin:12px 0;padding:12px}
 legend{font-weight:600;padding:0 6px}label{display:block;padding:4px 0}.ok{color:#17794a}.bad{color:#b23a2e}
 nav{display:flex;justify-content:space-between;margin-top:20px}`;
 

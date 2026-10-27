@@ -20,12 +20,10 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-side p-10 text-on-side lg:flex">
-        <div className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand font-bold text-white">A</span>
-          <span className="font-semibold text-white">ABHI People</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/logo-white.png" alt="ABHI EX" className="h-10 w-auto self-start" />
         <div>
-          <h2 className="text-3xl font-semibold leading-tight text-white">From requisition to first day,<br />in one place.</h2>
+          <h2 className="text-3xl font-semibold leading-tight text-white">From requisition to <span className="text-accent">first day</span>,<br />in one place.</h2>
           <p className="mt-3 max-w-md text-on-side-muted">
             Plan headcount, hire with structured interviews, verify references and eCIB, send offers, and welcome new colleagues with a guided orientation.
           </p>
@@ -34,6 +32,8 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       </div>
       <div className="flex items-center justify-center p-6">
         <div className="w-full max-w-sm">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/logo-dark.png" alt="ABHI EX" className="mb-6 h-9 w-auto lg:hidden" />
           <h1 className="text-2xl font-semibold">Sign in</h1>
           <p className="mt-1 text-sm text-muted">
             New candidate? <Link href="/register" className="text-brand underline">Create an account</Link> or{" "}

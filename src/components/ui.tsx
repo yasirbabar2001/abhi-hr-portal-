@@ -288,7 +288,7 @@ export function Progress({ value, tone = "brand" }: { value: number; tone?: "bra
       <div
         className={clsx(
           "h-full rounded-full",
-          tone === "brand" && "bg-brand",
+          tone === "brand" && "bg-accent-2",
           tone === "ok" && "bg-ok",
           tone === "warn" && "bg-amber-500",
           tone === "bad" && "bg-bad",

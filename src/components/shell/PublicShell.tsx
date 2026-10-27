@@ -12,8 +12,10 @@ export async function PublicShell({ children, candidateNav = false }: { children
       <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur no-print">
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
           <Link href="/careers" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand font-bold text-white">A</span>
-            <span className="whitespace-nowrap text-sm font-semibold">{s.shortName}<span className="hidden sm:inline"> Careers</span></span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/logo-dark.png" alt="ABHI EX" className="h-7 w-auto" />
+            <span className="h-5 w-px bg-line" aria-hidden />
+            <span className="hidden whitespace-nowrap text-sm font-semibold text-ink sm:inline">Careers</span>
           </Link>
           <nav className="ml-auto flex items-center gap-1 text-sm">
             <Link href="/careers" className="whitespace-nowrap rounded-lg px-2 py-1.5 sm:px-3 hover:bg-paper">Jobs</Link>

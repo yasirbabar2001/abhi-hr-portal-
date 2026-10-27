@@ -31,9 +31,9 @@ export default async function CareersPage({ searchParams }: { searchParams: Prom
   const newCutoff = isoDaysFromNow(-7);
   return (
     <div>
-      <section className="-mx-4 -mt-8 mb-8 bg-gradient-to-br from-side to-brand-2 px-4 py-14 text-white">
+      <section className="-mx-4 -mt-8 mb-8 border-b-4 border-accent bg-gradient-to-br from-side to-brand-2 px-4 py-14 text-white">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Careers at {d.settings.shortName}</h1>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Careers at <span className="text-accent">{d.settings.shortName}</span></h1>
           <p className="mx-auto mt-3 max-w-2xl text-on-side">{d.settings.careersIntro}</p>
           <form className="mx-auto mt-6 flex max-w-2xl flex-col gap-2 rounded-xl bg-white p-2 shadow-lg sm:flex-row" action="/careers">
             <input name="q" type="search" defaultValue={sp.q} placeholder="Job title, skill or keyword" className="input flex-1 border-0 text-ink" aria-label="Search jobs" />
@@ -41,7 +41,7 @@ export default async function CareersPage({ searchParams }: { searchParams: Prom
               <option value="">All cities</option>
               {cities.map((c) => <option key={c}>{c}</option>)}
             </select>
-            <button className="rounded-lg bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-2">Search</button>
+            <button className="rounded-lg bg-accent px-5 py-2 text-sm font-semibold text-brand hover:brightness-95">Search</button>
           </form>
           <p className="mt-3 text-sm text-on-side-muted">{all.length} open positions</p>
         </div>

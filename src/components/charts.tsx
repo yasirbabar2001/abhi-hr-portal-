@@ -3,7 +3,7 @@ import clsx from "clsx";
 // Lightweight SVG/CSS charts. Every chart also exposes its numbers as text so
 // values can be read without hovering, and screen readers get a summary.
 
-const PALETTE = ["#0e7c66", "#2457a6", "#c07a12", "#8a4fbf", "#c2410c", "#0f766e", "#64748b"];
+const PALETTE = ["#08182e", "#71c7ac", "#2457a6", "#c07a12", "#8a4fbf", "#c2410c", "#0f766e", "#64748b"];
 
 export function BarList({
   items,
@@ -27,7 +27,7 @@ export function BarList({
             </span>
           </div>
           <div className="h-2 rounded-full bg-slate-100">
-            <div className="h-full rounded-full bg-brand" style={{ width: `${(i.value / top) * 100}%` }} />
+            <div className="h-full rounded-full bg-accent-2" style={{ width: `${(i.value / top) * 100}%` }} />
           </div>
         </li>
       ))}
@@ -132,7 +132,7 @@ export function Columns({
             {i.target !== undefined && (
               <div className="absolute bottom-0 w-3/4 rounded-t border-2 border-dashed border-slate-300" style={{ height: (i.target / top) * height }} />
             )}
-            <div className="absolute bottom-0 w-1/2 rounded-t bg-brand" style={{ height: (i.value / top) * height }} />
+            <div className="absolute bottom-0 w-1/2 rounded-t bg-accent-2" style={{ height: (i.value / top) * height }} />
           </div>
           <span className="w-full truncate text-center text-[11px] text-muted" title={i.label}>
             {i.label}
@@ -148,7 +148,7 @@ export function Sparkline({ values, className }: { values: number[]; className?:
   const pts = values.map((v, i) => `${(i / Math.max(1, values.length - 1)) * 100},${30 - (v / max) * 28}`).join(" ");
   return (
     <svg viewBox="0 0 100 30" className={clsx("h-8 w-full", className)} preserveAspectRatio="none" aria-hidden>
-      <polyline points={pts} fill="none" stroke="#0e7c66" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+      <polyline points={pts} fill="none" stroke="#3f9e80" strokeWidth="2" vectorEffect="non-scaling-stroke" />
     </svg>
   );
 }

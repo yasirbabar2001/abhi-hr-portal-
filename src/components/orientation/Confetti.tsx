@@ -1,5 +1,5 @@
 // Pure-CSS confetti burst for celebrations. Decorative only.
-const COLORS = ["#0e7c66", "#f59e0b", "#2457a6", "#e11d48", "#8b5cf6", "#10b981"];
+const COLORS = ["#71c7ac", "#08182e", "#f59e0b", "#2457a6", "#e11d48", "#8b5cf6", "#10b981"];
 
 export function Confetti({ pieces = 60 }: { pieces?: number }) {
   return (
